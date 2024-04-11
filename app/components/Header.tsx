@@ -13,15 +13,18 @@ import Icon from '../assets/icons/icon';
 import {colors, hp, wp} from '../helpers';
 
 interface HeaderProps {
+  row?: boolean;
   back?: boolean;
   styleHeader?: ViewStyle;
 }
 
-const Header: React.FC<HeaderProps> = ({styleHeader, back}) => {
+const Header: React.FC<HeaderProps> = ({styleHeader, back, row}) => {
   const {goBack} = useNavigation();
   const statusBarHeight = StatusBar.currentHeight ?? 0;
   const handleLeftIcon = () =>
     back ? goBack() : Alert.alert('Drawer', 'Drawer is under construction');
+  const handleRightIcon = () =>
+    Alert.alert('Rating', 'Rating functionality is under construction');
   return (
     <View style={[styles.container, styleHeader, {marginTop: statusBarHeight}]}>
       <TouchableOpacity
@@ -35,6 +38,19 @@ const Header: React.FC<HeaderProps> = ({styleHeader, back}) => {
           type={'MaterialCommunityIcons'}
         />
       </TouchableOpacity>
+      {row && (
+        <TouchableOpacity
+          style={styles.iconContainer}
+          activeOpacity={0.6}
+          onPress={handleRightIcon}>
+          <Icon
+            size={wp(6)}
+            name={'star'}
+            type={'MaterialCommunityIcons'}
+            color={colors.YELLOW_MANGO}
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -49,6 +65,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: wp(4),
     backgroundColor: colors.TRANSPARENT,
+    justifyContent: 'space-between',
   },
   iconContainer: {
     height: wp(7),

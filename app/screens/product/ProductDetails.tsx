@@ -1,23 +1,23 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import {
   Header,
   BottomTab,
   Separator,
   SvgWrapper,
+  SnapCarousel,
   TabViewFunction,
 } from '../../components';
 import Icon from '../../assets/icons/icon';
-import {chairImg} from '../../assets/images';
 import {colors, fp, hp, wp} from '../../helpers';
 
 const ProductDetails = () => {
   return (
     <SvgWrapper fade>
-      <Header back />
+      <Header back row />
+      <SnapCarousel />
       <View style={styles.contentContainer}>
-        <Image source={chairImg} style={styles.img} resizeMode={'contain'} />
         {/* Product info section */}
         <View style={styles.productInfoCon}>
           <View style={styles.productInfo}>

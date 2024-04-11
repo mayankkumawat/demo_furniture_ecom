@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     height: hp(8),
     width: wp(100),
+    zIndex: 1000,
     borderTopWidth: 1,
     position: 'absolute',
     flexDirection: 'row',

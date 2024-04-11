@@ -1,8 +1,10 @@
 import React, {ReactNode} from 'react';
-import {StatusBar, StyleSheet, View, ViewStyle} from 'react-native';
+import {ScrollView, StatusBar, StyleSheet, View, ViewStyle} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {colors, hp} from '../helpers';
 import {BackgroundShape} from '../assets/svgs';
+import {keyboardProps} from '../constants/keyboardProps';
 
 interface SvgWrapperProps {
   fade?: boolean;
@@ -17,10 +19,14 @@ const SvgWrapper: React.FC<SvgWrapperProps> = ({
 }) => {
   const height = hp(100) + StatusBar.currentHeight ?? 0;
   return (
-    <View style={[styles.container, stylesContainer]}>
-      <BackgroundShape fade={fade} />
-      <View style={[styles.childContainer, {height}]}>{children}</View>
-    </View>
+    <ScrollView
+      contentContainerStyle={[styles.container, stylesContainer]}
+      nestedScrollEnabled>
+      <KeyboardAwareScrollView {...keyboardProps}>
+        <BackgroundShape fade={fade} />
+        <View style={[styles.childContainer, {height}]}>{children}</View>
+      </KeyboardAwareScrollView>
+    </ScrollView>
   );
 };
 

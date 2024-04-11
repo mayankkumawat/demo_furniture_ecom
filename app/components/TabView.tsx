@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.BLUE_FB,
   },
   dummyText: {
-    height: hp(15),
+    height: hp(10),
     alignItems: 'center',
     justifyContent: 'center',
   },
